@@ -6,7 +6,7 @@ im_orig = im2double(imread('cameraman.tif'));
 patch = imcrop(im_corrotta);
 figure; imhist(patch);
 noise_var = var(patch(:))
-im_var = var(im_corrotta(:));
+im_var = var(im_orig(:));
 
 h = fspecial('motion', 11, 0);
 
@@ -15,8 +15,8 @@ im_restaurata = deconvwnr(im_corrotta, h, nsr);
 
 [psnr2, mse2] = measerr(im_orig, im_restaurata)
 
-% Dato che le misure di qualit‡ sono inferiori rispetto a quelle iniziali,
-% Ë possibile filtrare l'immagine con un filtro in grado di attenuare il
+% Dato che le misure di qualit√† sono inferiori rispetto a quelle iniziali,
+% √® possibile filtrare l'immagine con un filtro in grado di attenuare il
 % rumore gaussiano (es: media aritmetica, geometrica, armonica, midpoint,
 % alpha-trimmed, media adattiva). Il calcolo delle metriche va ripetuto ad
 % ogni prova.
